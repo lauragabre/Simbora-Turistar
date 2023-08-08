@@ -3,4 +3,4 @@ Este repositório tem como objetivo principal o desenvolvimento de um programa e
 
 **Descrição Inicial**
 
-O programa “Simbora Turistar” tem como público alvo pessoas que desejam fazer turismo em Pernambuco. O objetivo do sistema é permitir que os usuários façam o seu cadastro e possam cadastrar informações sobre os lugares que visitaram e os lugares que desejam visitar. Além disso, o sistema fornece informações úteis, como horário de funcionamento e valor de entrada, para os lugares desejados.
+O programa “Simbora Turistar” tem como público alvo pessoas que desejam fazer turismo em Pernambuco. O objetivo do sistema é permitir que os usuários façam o seu cadastro e possam cadastrar informações sobre os lugares que visitaram e os lugares que desejam visitar. 
