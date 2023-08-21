@@ -13,10 +13,16 @@ import java.util.List;
 public interface FachadaInterface {
     
     List<String> listarLocal();
+    List<String> listarLocal(String nome, String cidade, String descricao);
     
     void excluirLocal(String nome);
     void incluirLocal(String nome, String cidade, String descricao);
     void atualizarLocal(String nome, String cidade, String descricao);
     
+    List<String> listarUsuario();
+    List<String> listarUsuario(String nome, String email);
+    
+    void excluirUsuario(String email);
+    void incluirUsuario(String nome, String email);
     void atualizarUsuario(String nome, String email);
 }
