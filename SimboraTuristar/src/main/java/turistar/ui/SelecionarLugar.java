@@ -10,11 +10,13 @@ package turistar.ui;
  */
 public class SelecionarLugar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SelecionarLugar
-     */
+    private LugarGratuito lugarGratuitoFrame;
+    private LugarPago lugarPagoFrame;
+    
     public SelecionarLugar() {
         initComponents();
+        lugarPagoFrame = new LugarPago();
+        lugarGratuitoFrame = new LugarGratuito();
     }
 
     /**
@@ -41,6 +43,11 @@ public class SelecionarLugar extends javax.swing.JFrame {
         });
 
         jButton2.setText("Gratuito");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("O lugar que visitou foi:");
@@ -88,8 +95,12 @@ public class SelecionarLugar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        lugarPagoFrame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        lugarGratuitoFrame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
