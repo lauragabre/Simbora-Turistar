@@ -82,4 +82,8 @@ public class FachadaTuristar {
     public void excluirUsuario(Usuario usuario) {
         usuarios.remove(usuario);
     }
+    
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
 }

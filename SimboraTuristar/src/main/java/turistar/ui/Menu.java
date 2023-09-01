@@ -4,17 +4,31 @@
  */
 package turistar.ui;
 
+import turistar.model.FachadaTuristar;
+import turistar.model.Usuario;
+import turistar.model.Local;
+import turistar.ui.TelaVisualizarUsuario;
+
 /**
  *
- * @author laura
+ * @author Serviços
  */
 public class Menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
+    private FachadaTuristar fachada;
+    private SelecionarLugar selecionarLugarFrame;
+    private EditarUsuario editarUsuarioFrame;
+    //private TelaVisualizarUsuario telaVisualizarUsuarioFrame;
+    
     public Menu() {
         initComponents();
+        fachada = new FachadaTuristar();
+        selecionarLugarFrame = new SelecionarLugar();
+        editarUsuarioFrame = new EditarUsuario();
+        //telaVisualizarUsuarioFrame = new TelaVisualizarUsuario();
     }
 
     /**
@@ -26,35 +40,88 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        Lugares = new javax.swing.JMenu();
+        CadastrarLugares = new javax.swing.JMenuItem();
+        EditarLugares = new javax.swing.JMenuItem();
+        ListarLugares = new javax.swing.JMenuItem();
+        RemoverLugares = new javax.swing.JMenuItem();
+        MinhasInfos = new javax.swing.JMenu();
+        VisualizarUsuarios = new javax.swing.JMenuItem();
+        EditarUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Login");
+        Lugares.setText("Lugares");
+
+        CadastrarLugares.setText("Cadastrar");
+        CadastrarLugares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastrarLugaresActionPerformed(evt);
+            }
+        });
+        Lugares.add(CadastrarLugares);
+
+        EditarLugares.setText("Editar");
+        Lugares.add(EditarLugares);
+
+        ListarLugares.setText("Listar");
+        Lugares.add(ListarLugares);
+
+        RemoverLugares.setText("Remover");
+        Lugares.add(RemoverLugares);
+
+        jMenuBar1.add(Lugares);
+
+        MinhasInfos.setText("Minhas Informações");
+
+        VisualizarUsuarios.setText("Visualizar");
+        VisualizarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisualizarUsuariosActionPerformed(evt);
+            }
+        });
+        MinhasInfos.add(VisualizarUsuarios);
+
+        EditarUsuario.setText("Editar");
+        EditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarUsuarioActionPerformed(evt);
+            }
+        });
+        MinhasInfos.add(EditarUsuario);
+
+        jMenuBar1.add(MinhasInfos);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(338, Short.MAX_VALUE))
+            .addGap(0, 430, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+            .addGap(0, 272, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CadastrarLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarLugaresActionPerformed
+        selecionarLugarFrame.setVisible(true);
+    }//GEN-LAST:event_CadastrarLugaresActionPerformed
+
+    private void VisualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarUsuariosActionPerformed
+        TelaVisualizarUsuario telaVisualizarUsuarioFrame = new TelaVisualizarUsuario();
+        telaVisualizarUsuarioFrame.setVisible(true);
+    }//GEN-LAST:event_VisualizarUsuariosActionPerformed
+
+    private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
+        EditarUsuario editarUsuarioFrame = new EditarUsuario();
+        editarUsuarioFrame.setVisible(true);
+    }//GEN-LAST:event_EditarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,7 +159,14 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenuItem CadastrarLugares;
+    private javax.swing.JMenuItem EditarLugares;
+    private javax.swing.JMenuItem EditarUsuario;
+    private javax.swing.JMenuItem ListarLugares;
+    private javax.swing.JMenu Lugares;
+    private javax.swing.JMenu MinhasInfos;
+    private javax.swing.JMenuItem RemoverLugares;
+    private javax.swing.JMenuItem VisualizarUsuarios;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
