@@ -10,7 +10,7 @@ import turistar.interfac.IUsuario;
  * @author laura
  */
 public class Usuario implements IUsuario{
-    
+
     private String nome;
     private String email;
 
@@ -25,5 +25,25 @@ public class Usuario implements IUsuario{
 
     public String getEmail() {
         return email;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }  
+    
+    public String toString() {
+        return "Nome: " + nome + ", Email: " + email;
+    }
+
+    public void add(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    Usuario get(int rowIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

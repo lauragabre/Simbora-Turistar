@@ -23,4 +23,9 @@ public class Pago extends Local{
     public void setCusto(double custo) {
         this.custo = custo;
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + ", Custo: " + custo;
+    }
 }

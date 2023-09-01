@@ -10,7 +10,7 @@ import turistar.interfac.ILocal;
  *
  * @author laura
  */
-public abstract class Local implements ILocal{
+public class Local implements ILocal{
     private String nome;
     private String cidade;
     private String descricao;
@@ -31,5 +31,21 @@ public abstract class Local implements ILocal{
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String toString() {
+        return "Nome: " + nome + ", Cidade: " + cidade + ", Descricao: " + descricao;
     }
 }

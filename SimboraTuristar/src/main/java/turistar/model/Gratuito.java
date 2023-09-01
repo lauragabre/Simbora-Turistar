@@ -23,4 +23,9 @@ public class Gratuito extends Local{
     public void setReserva(boolean reserva) {
         this.reserva = reserva;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Reserva: " + reserva;
+    }
 }

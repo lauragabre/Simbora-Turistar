@@ -4,10 +4,8 @@
  */
 package turistar.ui;
 
-import turistar.model.FachadaTuristar;
 import turistar.model.Usuario;
 import turistar.model.Local;
-import turistar.ui.TelaVisualizarUsuario;
 
 /**
  *
@@ -18,17 +16,13 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    private FachadaTuristar fachada;
-    private SelecionarLugar selecionarLugarFrame;
-    private EditarUsuario editarUsuarioFrame;
-    //private TelaVisualizarUsuario telaVisualizarUsuarioFrame;
+    //private SelecionarLugar selecionarLugarFrame;
+    //private EditarUsuario editarUsuarioFrame;
     
     public Menu() {
         initComponents();
-        fachada = new FachadaTuristar();
-        selecionarLugarFrame = new SelecionarLugar();
-        editarUsuarioFrame = new EditarUsuario();
-        //telaVisualizarUsuarioFrame = new TelaVisualizarUsuario();
+        //selecionarLugarFrame = new SelecionarLugar();
+        //editarUsuarioFrame = new EditarUsuario();
     }
 
     /**
@@ -43,8 +37,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Lugares = new javax.swing.JMenu();
         CadastrarLugares = new javax.swing.JMenuItem();
-        EditarLugares = new javax.swing.JMenuItem();
         ListarLugares = new javax.swing.JMenuItem();
+        EditarLugares = new javax.swing.JMenuItem();
         RemoverLugares = new javax.swing.JMenuItem();
         MinhasInfos = new javax.swing.JMenu();
         VisualizarUsuarios = new javax.swing.JMenuItem();
@@ -62,11 +56,16 @@ public class Menu extends javax.swing.JFrame {
         });
         Lugares.add(CadastrarLugares);
 
+        ListarLugares.setText("Listar");
+        ListarLugares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarLugaresActionPerformed(evt);
+            }
+        });
+        Lugares.add(ListarLugares);
+
         EditarLugares.setText("Editar");
         Lugares.add(EditarLugares);
-
-        ListarLugares.setText("Listar");
-        Lugares.add(ListarLugares);
 
         RemoverLugares.setText("Remover");
         Lugares.add(RemoverLugares);
@@ -110,18 +109,25 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastrarLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarLugaresActionPerformed
-        selecionarLugarFrame.setVisible(true);
+        //selecionarLugarFrame.setVisible(true);
+        LugarPago lugarPagoFrame = new LugarPago();
+        lugarPagoFrame.setVisible(true);
     }//GEN-LAST:event_CadastrarLugaresActionPerformed
 
     private void VisualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarUsuariosActionPerformed
-        TelaVisualizarUsuario telaVisualizarUsuarioFrame = new TelaVisualizarUsuario();
-        telaVisualizarUsuarioFrame.setVisible(true);
+        VisualizaUsuario visualizaUsuarioFrame = new VisualizaUsuario();
+        visualizaUsuarioFrame.setVisible(true);
     }//GEN-LAST:event_VisualizarUsuariosActionPerformed
 
     private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
-        EditarUsuario editarUsuarioFrame = new EditarUsuario();
-        editarUsuarioFrame.setVisible(true);
+        //EditarUsuario editarUsuarioFrame = new EditarUsuario();
+        //editarUsuarioFrame.setVisible(true);
     }//GEN-LAST:event_EditarUsuarioActionPerformed
+
+    private void ListarLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarLugaresActionPerformed
+        VisualizaLocal visualizaLocalFrame = new VisualizaLocal();
+        visualizaLocalFrame.setVisible(true);
+    }//GEN-LAST:event_ListarLugaresActionPerformed
 
     /**
      * @param args the command line arguments

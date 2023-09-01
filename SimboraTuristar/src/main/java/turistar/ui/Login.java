@@ -4,21 +4,29 @@
  */
 package turistar.ui;
 
-import turistar.model.FachadaTuristar;
+import java.util.ArrayList;
 import turistar.model.Usuario;
-/**
- *
- * @author Serviços
- */
-public class Login extends javax.swing.JFrame {
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import java.util.*;
+import java.io.*;
+import turistar.model.UsuarioTableModel;
 
-    private FachadaTuristar fachada;
+public class Login extends javax.swing.JFrame {
+    
+    ArrayList<Usuario> usuarios;
+    String msg = "";
+    private Object novoUsuario;
+    
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        fachada = new FachadaTuristar();
+        usuarios = new ArrayList<>();
+    }
+    public ArrayList<Usuario> getUsuario() {
+        return this.usuarios;
     }
 
     /**
@@ -35,7 +43,6 @@ public class Login extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,14 +53,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Email");
 
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Cadastro");
+        jButton2.setText("Entrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -67,17 +67,15 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
+                            .addComponent(jTextField2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jButton2)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -92,9 +90,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(jButton2)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -112,36 +108,34 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nome = jTextField1.getText();
-        String email = jTextField2.getText();
-
-        Usuario usuario = fachada.buscarUsuarioPorEmail(email);
-        if (usuario != null && usuario.getNome().equals(nome)) {
-            //jLabel1.setText("Bem-vindo, " + usuario.getNome()); // Atualiza o JLabel para mostrar as informações do usuário
-            Menu menuFrame = new Menu();
-            menuFrame.setVisible(true);
-            this.dispose(); // Fecha o JFrame Login
-        } else {
-            jLabel1.setText("Usuário não encontrado ou dados incorretos");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
     // Botão "Cadastro" pressionado
-        String nome = jTextField1.getText();
-        String email = jTextField2.getText();
+        String nome = jTextField1.getText().trim();
+        String email = jTextField2.getText().trim();
 
-        Usuario novoUsuario = new Usuario(nome, email); // Cria um novo usuário
-        fachada.adicionarUsuario(novoUsuario); // Adiciona o usuário à fachada
-
-        jLabel1.setText("Usuário cadastrado com sucesso!"); // Atualiza o JLabel para exibir uma mensagem de sucesso
+        Usuario usuario = new Usuario(nome, email); // Cria um novo usuário
         
-        // Após cadastrar, exiba o JFrame Menu e feche o JFrame Cadastro
+        if(jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Insira os campos solicitados");
+        }
+        else
+        {
+            usuarios.add(usuario);
+            saveUsuario();
+            jLabel1.setText("Usuário cadastrado com sucesso");
+        }
         Menu menuFrame = new Menu();
         menuFrame.setVisible(true);
         this.dispose(); // Fecha o JFrame Cadastro
+
+        //jLabel1.setText("Usuário cadastrado com sucesso!"); // Atualiza o JLabel para exibir uma mensagem de sucesso
+        
+        // Após cadastrar, exiba o JFrame Menu e feche o JFrame Cadastro
+        //Menu menuFrame = new Menu();
+        //menuFrame.setVisible(true);
+        //this.dispose(); // Fecha o JFrame Cadastro
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -180,7 +174,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -188,4 +181,43 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
-}
+
+public void saveUsuario() {
+
+    VisualizaUsuario lc = new VisualizaUsuario();
+    String nome = jTextField1.getText().trim();
+    String email = jTextField2.getText().trim();
+    Usuario novoUsuario = new Usuario(nome, email);
+    lc.setUsuarioTableModel(usuarios); // Use setUsuarioTableModel
+    
+    System.out.println(usuarios + ".");
+    /*if (nome != null && email != null) {
+        if (usuarios != null) {
+            System.out.println(novoUsuario);
+            usuarios.add(novoUsuario);
+            UsuarioTableModel usuarioTableModel = new UsuarioTableModel(usuarios);
+            lc.setUsuarioTableModel(usuarios); // Atualize o modelo da tabela
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar salvar o arquivo: ");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar salvar o arquivo: ");
+    }
+
+    try {
+        FileOutputStream file = new FileOutputStream("Usuario.txt");
+        ObjectOutputStream outputFile = new ObjectOutputStream(file);
+
+        for (int n = 0; n < usuarios.size(); n++) {
+            outputFile.writeObject(usuarios.get(n));
+        }
+
+        outputFile.close();
+        JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
+        this.dispose();
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }*/
+        }
+  }
+
